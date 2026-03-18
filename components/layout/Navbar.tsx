@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo.png"
+              src="/logo_white.png"
               alt="VzlaBike and Run"
               width={160}
               height={48}

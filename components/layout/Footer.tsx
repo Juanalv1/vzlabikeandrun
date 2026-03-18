@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-5">
               <Image
-                src="/logo.png"
+                src="/logo_white.png"
                 alt="VzlaBike and Run"
                 width={150}
                 height={45}
