@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Timer, Mail, Phone, Instagram, Facebook, Youtube } from 'lucide-react'
+import Image from 'next/image'
+import { Mail, Phone, Instagram, Facebook, Youtube } from 'lucide-react'
 
 // Footer con logo, links, contacto y redes sociales
 export default function Footer() {
@@ -9,16 +10,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo y descripción */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-naranja rounded-lg flex items-center justify-center">
-                <Timer className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <span className="font-barlow font-black text-white text-lg">
-                  VzlaBike<span className="text-naranja">®</span>
-                </span>
-                <span className="block text-[10px] text-gris-texto tracking-widest uppercase">and Run</span>
-              </div>
+            <div className="mb-5">
+              <Image
+                src="/logo.png"
+                alt="VzlaBike and Run"
+                width={150}
+                height={45}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-gris-texto text-sm leading-relaxed">
               La organización de eventos deportivos más reconocida de Venezuela.

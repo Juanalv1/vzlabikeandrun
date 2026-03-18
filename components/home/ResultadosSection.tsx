@@ -1,8 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { resultadosRecientes } from '@/lib/data'
 import { formatearFecha } from '@/lib/utils'
-import { ExternalLink, Users } from 'lucide-react'
+import { ArrowRight, ExternalLink, Users } from 'lucide-react'
 
 // Sección de resultados recientes de eventos pasados
 export default function ResultadosSection() {
@@ -48,14 +49,30 @@ export default function ResultadosSection() {
                   <Users className="w-4 h-4" />
                   <span>{resultado.participantes.toLocaleString()} atletas</span>
                 </div>
-                <button className="flex items-center gap-1.5 text-naranja text-sm font-medium hover:underline">
+                <Link href="/resultados" className="flex items-center gap-1.5 text-naranja text-sm font-medium hover:underline">
                   Ver Resultados
                   <ExternalLink className="w-3.5 h-3.5" />
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA ver todos */}
+        <motion.div
+          className="mt-10 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Link
+            href="/resultados"
+            className="inline-flex items-center gap-2 border border-naranja text-naranja hover:bg-naranja hover:text-white px-8 py-3 rounded-xl text-sm font-bold transition-all duration-200"
+          >
+            Ver Todos los Resultados
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

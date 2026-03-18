@@ -7,15 +7,15 @@ import { ArrowRight, ChevronDown } from 'lucide-react'
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-negro">
-      {/* Imagen de fondo con overlay */}
+      {/* Imagen de fondo: carrera de fondo venezolana */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://picsum.photos/seed/atletismo/1920/1080)' }}
+        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1920&q=80)' }}
       />
-      {/* Overlay en capas */}
-      <div className="absolute inset-0 bg-negro/70" />
-      <div className="absolute inset-0 bg-gradient-to-b from-negro/30 via-transparent to-negro" />
-      <div className="absolute inset-0 bg-gradient-to-r from-negro/60 via-transparent to-negro/20" />
+      {/* Overlay en capas con opacidad para mantener legibilidad */}
+      <div className="absolute inset-0 bg-negro/65" />
+      <div className="absolute inset-0 bg-gradient-to-b from-negro/20 via-transparent to-negro" />
+      <div className="absolute inset-0 bg-gradient-to-r from-negro/70 via-transparent to-negro/10" />
 
       {/* Líneas de velocidad decorativas */}
       <div className="absolute inset-0 speed-lines opacity-50" />

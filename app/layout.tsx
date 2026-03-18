@@ -45,7 +45,7 @@ export default function RootLayout({
 
         {/* Banner fijo inferior: propuesta de redise\u00F1o */}
         <div className="fixed bottom-0 left-0 right-0 z-[60] bg-naranja text-white text-center text-xs py-2 font-medium tracking-wide">
-          Propuesta de Redise\u00F1o &mdash; Desarrollado por VzlaBike Dev Team
+          Propuesta de Rediseño; Desarrollado por Juan Alvarado
         </div>
       </body>
     </html>

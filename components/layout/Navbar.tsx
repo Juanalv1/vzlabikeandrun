@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Timer } from 'lucide-react'
+import Image from 'next/image'
+import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
@@ -9,7 +10,7 @@ const links = [
   { href: '#nosotros', label: 'Nosotros' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#eventos', label: 'Eventos' },
-  { href: '#resultados', label: 'Resultados' },
+  { href: '/resultados', label: 'Resultados' },
   { href: '#contacto', label: 'Contacto' },
 ]
 
@@ -34,16 +35,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 bg-naranja rounded-lg flex items-center justify-center group-hover:bg-naranja-hover transition-colors">
-              <Timer className="w-5 h-5 text-white" />
-            </div>
-            <div className="leading-tight">
-              <span className="font-barlow font-black text-white text-lg tracking-wide block">
-                VzlaBike<span className="text-naranja">®</span>
-              </span>
-              <span className="text-[10px] text-gris-texto tracking-widest uppercase">and Run</span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="VzlaBike and Run"
+              width={160}
+              height={48}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Links desktop */}
@@ -52,7 +52,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors hover:text-naranja"
+                className="text-gray-300 hover:text-naranja text-sm font-medium transition-colors"
               >
                 {link.label}
               </Link>
