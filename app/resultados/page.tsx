@@ -10,6 +10,19 @@ import Footer from '@/components/layout/Footer'
 // Datos extendidos de resultados históricos
 const todosLosResultados = [
   {
+    id: 0,
+    nombre: "Women's Run by Gravity 10K 2026",
+    fecha: "2026-03-08",
+    participantes: 55,
+    distancias: ["10K"],
+    ciudad: "Acarigua",
+    color: "from-purple-600 to-pink-500",
+    categoria: "Running Femenino",
+    ganadoraGeneral: "Luisangel Colmenares",
+    tiempoGanadora: "40:04",
+    link: "/resultados/womens-run-10k-2026"
+  },
+  {
     id: 1,
     nombre: "Women's Run by Gravity 2025",
     fecha: "2025-03-08",
@@ -271,13 +284,19 @@ export default function ResultadosPage() {
                       </div>
 
                       {/* CTA */}
-                      <a
-                        href={resultado.link}
-                        className="flex items-center justify-center gap-2 w-full border border-gris-3 hover:border-naranja text-gris-texto hover:text-naranja py-3 rounded-xl text-sm font-medium transition-all duration-200 group/btn"
-                      >
-                        Ver Resultados Completos
-                        <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                      </a>
+                      {resultado.link !== '#' ? (
+                        <Link
+                          href={resultado.link}
+                          className="flex items-center justify-center gap-2 w-full border border-gris-3 hover:border-naranja text-gris-texto hover:text-naranja py-3 rounded-xl text-sm font-medium transition-all duration-200 group/btn"
+                        >
+                          Ver Resultados Completos
+                          <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        </Link>
+                      ) : (
+                        <div className="flex items-center justify-center gap-2 w-full border border-gris-3 text-gris-4 py-3 rounded-xl text-sm font-medium cursor-not-allowed">
+                          Resultados no disponibles
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 ))}
