@@ -53,5 +53,5 @@ export default function StatsSection() {
 
 // Versión blanca del StatCounter para el fondo naranja
 function StatCounterWhite({ numero, sufijo }: { numero: number, sufijo: string }) {
-  return <StatCounter numero={numero} sufijo={sufijo} etiqueta="" />
+  return <StatCounter numero={numero} sufijo={sufijo} etiqueta="" colorClass="text-white" />
 }

@@ -6,10 +6,11 @@ interface StatCounterProps {
   sufijo: string
   etiqueta: string
   duracion?: number
+  colorClass?: string
 }
 
 // Contador animado que se dispara cuando el elemento entra en el viewport
-export default function StatCounter({ numero, sufijo, etiqueta, duracion = 2000 }: StatCounterProps) {
+export default function StatCounter({ numero, sufijo, etiqueta, duracion = 2000, colorClass = 'text-naranja' }: StatCounterProps) {
   const [count, setCount] = useState(0)
   const [started, setStarted] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -43,7 +44,7 @@ export default function StatCounter({ numero, sufijo, etiqueta, duracion = 2000 
 
   return (
     <div ref={ref} className="text-center group">
-      <div className="font-barlow font-black text-5xl md:text-6xl text-naranja tabular-nums">
+      <div className={`font-barlow font-black text-5xl md:text-6xl tabular-nums ${colorClass}`}>
         {count.toLocaleString('es-VE')}{sufijo}
       </div>
       <div className="text-gray-400 mt-2 text-sm font-medium tracking-wider uppercase">
