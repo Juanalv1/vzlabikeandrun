@@ -4,8 +4,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Search, ArrowLeft, Trophy, Medal, Filter, ChevronUp, ChevronDown } from 'lucide-react'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
 
 // Datos reales del Women's Run by Gravity 10K — 8 Marzo 2026, Acarigua, Portuguesa
 const atletas = [
@@ -110,9 +108,7 @@ export default function WomensRun10KResultados() {
       : null
 
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-negro pt-20 pb-20">
+    <main className="min-h-screen bg-negro pt-20 pb-20">
 
         {/* Hero del evento */}
         <section className="relative py-16 overflow-hidden">
@@ -284,8 +280,6 @@ export default function WomensRun10KResultados() {
             </p>
           </div>
         </section>
-      </main>
-      <Footer />
-    </>
+    </main>
   )
 }

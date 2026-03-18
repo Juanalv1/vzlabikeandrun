@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { MapPin, Calendar, ChevronRight } from 'lucide-react'
+import { MapPin, Calendar, ChevronRight, Trophy } from 'lucide-react'
 import { Evento } from '@/lib/data'
 import { formatearFecha } from '@/lib/utils'
 import CountdownTimer from './CountdownTimer'
@@ -11,6 +11,8 @@ interface EventCardProps {
 
 // Card de evento con countdown en tiempo real y efecto hover
 export default function EventCard({ evento }: EventCardProps) {
+  const isPast = new Date(evento.fecha) < new Date()
+
   return (
     <div className="card-hover group relative bg-gris-1 border border-gris-3 rounded-2xl overflow-hidden flex flex-col">
       {/* Barra de color superior con gradiente del evento */}
@@ -46,21 +48,39 @@ export default function EventCard({ evento }: EventCardProps) {
           ))}
         </div>
 
-        {/* Countdown */}
+        {/* Countdown o badge finalizado */}
         <div className="mb-5">
-          <p className="text-xs text-gris-texto mb-2 uppercase tracking-wider">Tiempo restante</p>
-          <CountdownTimer targetDate={evento.fecha} size="sm" />
+          {isPast ? (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gris-3 border border-gris-4 rounded-full text-xs font-bold text-gris-texto uppercase tracking-wider">
+              Evento Finalizado
+            </span>
+          ) : (
+            <>
+              <p className="text-xs text-gris-texto mb-2 uppercase tracking-wider">Tiempo restante</p>
+              <CountdownTimer targetDate={evento.fecha} size="sm" />
+            </>
+          )}
         </div>
 
-        {/* CTA Inscribirse */}
+        {/* CTA */}
         <div className="mt-auto">
-          <Link
-            href={`/eventos/${evento.id}`}
-            className="w-full flex items-center justify-center gap-2 bg-naranja hover:bg-naranja-hover text-white font-bold py-3 rounded-xl transition-all duration-200 group/btn"
-          >
-            Inscribirse
-            <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-          </Link>
+          {isPast ? (
+            <Link
+              href={evento.resultadosSlug ? `/resultados/${evento.resultadosSlug}` : '/resultados'}
+              className="w-full flex items-center justify-center gap-2 bg-gris-2 hover:bg-gris-3 border border-gris-3 hover:border-naranja text-gris-texto hover:text-naranja font-bold py-3 rounded-xl transition-all duration-200 group/btn"
+            >
+              <Trophy className="w-4 h-4" />
+              Ver Resultados
+            </Link>
+          ) : (
+            <Link
+              href={`/eventos/${evento.id}`}
+              className="w-full flex items-center justify-center gap-2 bg-naranja hover:bg-naranja-hover text-white font-bold py-3 rounded-xl transition-all duration-200 group/btn"
+            >
+              Inscribirse
+              <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
+          )}
         </div>
       </div>
     </div>

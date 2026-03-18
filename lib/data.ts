@@ -10,6 +10,7 @@ export interface Evento {
   color: string
   imagen: string
   precio?: { [distancia: string]: number }
+  resultadosSlug?: string
 }
 
 export const eventos: Evento[] = [
@@ -22,7 +23,8 @@ export const eventos: Evento[] = [
     categoria: "Atletismo",
     color: "from-purple-600 to-pink-500",
     imagen: "https://picsum.photos/seed/womensrun/800/600",
-    precio: { "2K": 5, "5K": 8, "10K": 12 }
+    precio: { "2K": 5, "5K": 8, "10K": 12 },
+    resultadosSlug: "womens-run-10k-2026"
   },
   {
     id: "expo-fitness-10k",

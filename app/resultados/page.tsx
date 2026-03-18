@@ -4,8 +4,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Search, Users, Calendar, ChevronRight, Trophy, ArrowLeft, ExternalLink } from 'lucide-react'
 import { formatearFecha } from '@/lib/utils'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
 
 // Datos extendidos de resultados históricos
 const todosLosResultados = [
@@ -143,9 +141,7 @@ export default function ResultadosPage() {
   })
 
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-negro pt-24 pb-16">
+    <main className="min-h-screen bg-negro pt-24 pb-16">
         {/* Header de la página */}
         <section className="relative py-16 bg-gris-1 border-b border-gris-3 overflow-hidden">
           <div className="absolute inset-0 opacity-5" style={{
@@ -304,8 +300,6 @@ export default function ResultadosPage() {
             )}
           </div>
         </section>
-      </main>
-      <Footer />
-    </>
+    </main>
   )
 }

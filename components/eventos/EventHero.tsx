@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
-import { MapPin, Calendar } from 'lucide-react'
+import Link from 'next/link'
+import { MapPin, Calendar, Trophy } from 'lucide-react'
 import { Evento } from '@/lib/data'
 import { formatearFecha } from '@/lib/utils'
 import CountdownTimer from '@/components/ui/CountdownTimer'
@@ -11,6 +12,8 @@ interface EventHeroProps {
 
 // Hero banner específico del evento con countdown prominente
 export default function EventHero({ evento }: EventHeroProps) {
+  const isPast = new Date(evento.fecha) < new Date()
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       {/* Fondo con gradiente del evento */}
@@ -73,14 +76,22 @@ export default function EventHero({ evento }: EventHeroProps) {
           </div>
         </motion.div>
 
-        {/* Countdown prominente */}
+        {/* Countdown o badge finalizado */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <p className="text-white/60 text-sm uppercase tracking-widest mb-4">Faltan</p>
-          <CountdownTimer targetDate={evento.fecha} size="lg" />
+          {isPast ? (
+            <span className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/80 font-bold uppercase tracking-widest text-sm">
+              Evento Finalizado
+            </span>
+          ) : (
+            <>
+              <p className="text-white/60 text-sm uppercase tracking-widest mb-4">Faltan</p>
+              <CountdownTimer targetDate={evento.fecha} size="lg" />
+            </>
+          )}
         </motion.div>
 
         {/* CTA */}
@@ -90,12 +101,22 @@ export default function EventHero({ evento }: EventHeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <a
-            href="#inscripcion"
-            className="inline-flex items-center gap-2 bg-white text-negro font-bold px-10 py-4 rounded-xl text-lg hover:bg-gray-100 transition-all duration-200 hover:shadow-2xl"
-          >
-            Inscríbete Ahora
-          </a>
+          {isPast ? (
+            <Link
+              href={evento.resultadosSlug ? `/resultados/${evento.resultadosSlug}` : '/resultados'}
+              className="inline-flex items-center gap-3 bg-white text-negro font-bold px-10 py-4 rounded-xl text-lg hover:bg-gray-100 transition-all duration-200 hover:shadow-2xl"
+            >
+              <Trophy className="w-5 h-5" />
+              Ver Resultados
+            </Link>
+          ) : (
+            <a
+              href="#inscripcion"
+              className="inline-flex items-center gap-2 bg-white text-negro font-bold px-10 py-4 rounded-xl text-lg hover:bg-gray-100 transition-all duration-200 hover:shadow-2xl"
+            >
+              Inscríbete Ahora
+            </a>
+          )}
         </motion.div>
       </div>
     </section>

@@ -26,17 +26,6 @@ export default function HeroSection() {
       {/* Contenido del Hero */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <div className="max-w-3xl">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 bg-naranja/20 border border-naranja/40 text-naranja text-xs font-bold px-4 py-2 rounded-full mb-6 tracking-widest uppercase">
-              <span className="w-2 h-2 bg-naranja rounded-full animate-pulse" />
-              Venezuela Deportiva
-            </span>
-          </motion.div>
 
           {/* Título principal */}
           <motion.h1
